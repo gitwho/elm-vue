@@ -1,6 +1,7 @@
 # elm-vue
 
 基于vue2最新实战项目，vue2 +vue-router2 + es6 +webpack 仿饿了么app。
+
 ###技术点
 > * vue-cli
 > * vue
@@ -9,10 +10,11 @@
 > * better-scroll
 > * stylus
 > * webpack
-###GIF图
-![elm1](https://github.com/gitwho/elm-vue.git/raw/master/gif/elm1.gif)
 
-![elm2](https://github.com/gitwho/elm-vue.git/raw/master/gif/elm2.gif)
+###GIF图
+>![elm1](https://github.com/gitwho/elm-vue/blob/master/gif/elm1.gif)
+
+>![elm2](https://github.com/gitwho/elm-vue/blob/master/gif/elm2.gif)
 
 项目地址：
 > git clone git@github.com:gitwho/elm-vue.git
