@@ -38,9 +38,9 @@
               }else{
                 this.food.count++
               }
-              console.log(event.target)
+//              console.log(event.target)
             //开发事件，传入参数，传递给父组件 goods.vue
-              this.$emit('cart.add',event.target);
+              this.$emit('cartAdd',event.target);
           },
           decreaseCart(event){
             if (!event._constructed) {

@@ -20,7 +20,11 @@
       </div>
       <div class="ball-container">
         <div v-for="ball in balls">
-          <transition name="drop">
+          <transition name="drop"
+                      @before-enter="beforeEnter"
+                      @enter="enter"
+                      @after-enter="afterEnter"
+          >
             <div v-show="ball.show" class="ball">
               <div class="inner inner-hook"></div>
             </div>
@@ -119,12 +123,12 @@
             }
           },
           listShow() {
-              console.log(this.totalCount)
-              if(!this.totalCount){
-                  this.fold = true;
-                  return false;
-              }
-              let show = !this.fold;
+//              console.log(this.totalCount)
+            if(!this.totalCount){
+              this.fold = true;
+              return false;
+            }
+            let show = !this.fold;
 
               if(show){
                   if(!this.scroll){
@@ -154,25 +158,27 @@
           },
           //drop方法
         drop(el){
-//            console.log(el);
+            console.log(el);
             for(let i=0;i<this.balls.length;i++){
                 let ball = this.balls[i];
                 if(!ball.show){
                     ball.show = true;//触发 动画滚动
                     ball.el = el;
                     this.dropBall.push(ball);
+//                  console.log(this.dropBall);
                     return;
                 }
             }
         },
         beforeEnter(el){
-            console.log('bf')
+//            console.log('bf')
             let count = this.balls.length;
             while (count--) {
                 let ball = this.balls[count];
+                //当前元素的偏移位置，然后给过渡元素设置其起始位置
                 if(ball.show) {
                     let rect = ball.el.getBoundingClientRect();
-                    console.log( ball.el )
+//                    console.log( rect )
                     let x = rect.left - 32;
                     let y = -(window.innerHeight - rect.top -22);
                     el.style.display = '';//显示
@@ -185,6 +191,9 @@
             }
         },
         enter(el){
+//          在enter里需要重新触发下浏览器的重绘
+          let refresh = el.offsetHeight;
+//          console.log(refresh)
           this.$nextTick(() => {
             el.style.webkitTransform = 'translate3d(0,0,0)';
             el.style.transform = 'translate3d(0,0,0)';
@@ -194,7 +203,8 @@
           });
         },
         afterEnter(el){
-          let ball = this.dropBall.shift();
+//            console.log('af')
+          let ball = this.dropBall.shift();//数组的第一个元素从其中删除，并返回第一个元素的值
           if (ball) {
             ball.show = false;
             el.style.display = 'none';

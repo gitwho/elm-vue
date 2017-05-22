@@ -32,7 +32,7 @@
                                                                 v-show="food.oldPrice">￥{{food.oldPrice}}</span>
                 </div>
                 <div class="cartcontrol-wrapper">
-                  <cartControl @cart.add="cartAdd" :food="food"></cartControl>
+                  <cartControl @cartAdd="cartAdd" :food="food"></cartControl>
                 </div>
               </div>
             </li>
@@ -173,12 +173,12 @@
 
       }
     },
-    events: {
+    /*events: {
 //        接收子组件cartControl.vue的事件，并调用 _drop
         'cart.add'(target){
             this._drop(target);
         }
-    }
+    }*/
   }
 </script>
 
