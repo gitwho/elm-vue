@@ -19,7 +19,7 @@
 项目地址：
 > git clone git@github.com:gitwho/elm-vue.git
 
-需要安装第三方依赖
+需要安装第三方依赖，需要安装node.js
 > npm install
 
 启动：
